@@ -1,0 +1,21 @@
+{
+  "nav.home":"Home",
+  "nav.pdf":"PDF Tools",
+  "nav.tutorials":"Tutorials",
+  "nav.reviews":"Reviews",
+  "nav.about":"About",
+
+  "hero.title":"Free Online Tools Collection",
+  "hero.subtitle":"Developer · AI · PDF · Image · Text Tools",
+
+  "section.popular":"Popular Tools",
+  "section.categories":"Categories",
+  "section.ai":"Featured AI Tools",
+  "section.reviews":"Reviews",
+  "section.tutorials":"Latest Tutorials",
+
+  "footer.links":"Quick Links",
+  "footer.info":"Site Information",
+
+  "search.placeholder":"Search tools..."
+}
