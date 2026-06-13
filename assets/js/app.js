@@ -22,17 +22,23 @@ async function loadJSON(url){
 
     const res = await fetch(url);
 
-    if(!res.ok) throw new Error(url);
+    if(!res.ok){
+      throw new Error("404: " + url);
+    }
 
-    return await res.json();
+    const text = await res.text();
+
+    return JSON.parse(text);
 
   }catch(e){
 
-    console.warn("加载失败:", url);
+    console.warn("JSON加载失败:", url, e);
 
     return [];
 
   }
+
+}
 
 }
 
