@@ -1,0 +1,196 @@
+[
+  {
+    "id": 1,
+    "name": "ChatGPT",
+    "title": "ChatGPT",
+    "category": "AI工具",
+    "description": "OpenAI推出的智能AI助手",
+    "url": "/tool.html?name=ChatGPT",
+    "icon": "🤖",
+    "featured": true,
+    "rating": 5,
+    "tags": ["AI", "聊天", "写作"]
+  },
+
+  {
+    "id": 2,
+    "name": "Claude",
+    "title": "Claude",
+    "category": "AI工具",
+    "description": "Anthropic推出的大模型助手",
+    "url": "/tool.html?name=Claude",
+    "icon": "🧠",
+    "featured": true,
+    "rating": 5,
+    "tags": ["AI", "长文本"]
+  },
+
+  {
+    "id": 3,
+    "name": "Gemini",
+    "title": "Gemini",
+    "category": "AI工具",
+    "description": "Google AI智能助手",
+    "url": "/tool.html?name=Gemini",
+    "icon": "✨",
+    "featured": true,
+    "rating": 5,
+    "tags": ["AI", "搜索"]
+  },
+
+  {
+    "id": 4,
+    "name": "Canva AI",
+    "title": "Canva AI",
+    "category": "AI工具",
+    "description": "AI设计与图片生成工具",
+    "url": "/tool.html?name=Canva AI",
+    "icon": "🎨",
+    "featured": true,
+    "rating": 5,
+    "tags": ["设计", "AI"]
+  },
+
+  {
+    "id": 5,
+    "name": "PDF Merge",
+    "title": "PDF合并",
+    "category": "PDF工具",
+    "description": "多个PDF文件快速合并",
+    "url": "/pdf/merge.html",
+    "icon": "📄",
+    "featured": true,
+    "rating": 5,
+    "tags": ["PDF"]
+  },
+
+  {
+    "id": 6,
+    "name": "PDF Split",
+    "title": "PDF拆分",
+    "category": "PDF工具",
+    "description": "将PDF拆分成多个文件",
+    "url": "/pdf/split.html",
+    "icon": "✂️",
+    "featured": true,
+    "rating": 5,
+    "tags": ["PDF"]
+  },
+
+  {
+    "id": 7,
+    "name": "PDF Compress",
+    "title": "PDF压缩",
+    "category": "PDF工具",
+    "description": "减小PDF文件体积",
+    "url": "/pdf/compress.html",
+    "icon": "🗜️",
+    "featured": true,
+    "rating": 5,
+    "tags": ["PDF"]
+  },
+
+  {
+    "id": 8,
+    "name": "PDF to Word",
+    "title": "PDF转Word",
+    "category": "PDF工具",
+    "description": "PDF转换为Word文档",
+    "url": "/pdf/pdf-to-word.html",
+    "icon": "📘",
+    "featured": false,
+    "rating": 5,
+    "tags": ["PDF"]
+  },
+
+  {
+    "id": 9,
+    "name": "Word to PDF",
+    "title": "Word转PDF",
+    "category": "PDF工具",
+    "description": "Word文档转换为PDF",
+    "url": "/pdf/word-to-pdf.html",
+    "icon": "📕",
+    "featured": false,
+    "rating": 5,
+    "tags": ["PDF"]
+  },
+
+  {
+    "id": 10,
+    "name": "JSON Formatter",
+    "title": "JSON格式化",
+    "category": "开发工具",
+    "description": "格式化与校验JSON数据",
+    "url": "/dev/json-formatter.html",
+    "icon": "💻",
+    "featured": true,
+    "rating": 5,
+    "tags": ["开发"]
+  },
+
+  {
+    "id": 11,
+    "name": "Base64 Encode",
+    "title": "Base64编码",
+    "category": "开发工具",
+    "description": "文本与Base64互转",
+    "url": "/dev/base64.html",
+    "icon": "🔐",
+    "featured": true,
+    "rating": 5,
+    "tags": ["开发"]
+  },
+
+  {
+    "id": 12,
+    "name": "Timestamp Converter",
+    "title": "时间戳转换",
+    "category": "开发工具",
+    "description": "Unix时间戳转换工具",
+    "url": "/dev/timestamp.html",
+    "icon": "⏰",
+    "featured": true,
+    "rating": 5,
+    "tags": ["开发"]
+  },
+
+  {
+    "id": 13,
+    "name": "UUID Generator",
+    "title": "UUID生成器",
+    "category": "开发工具",
+    "description": "生成随机UUID",
+    "url": "/dev/uuid.html",
+    "icon": "🆔",
+    "featured": false,
+    "rating": 5,
+    "tags": ["开发"]
+  },
+
+  {
+    "id": 14,
+    "name": "Image Converter",
+    "title": "图片格式转换",
+    "category": "图片工具",
+    "description": "PNG、JPG、WEBP格式互转",
+    "url": "/image/converter.html",
+    "icon": "🖼️",
+    "featured": false,
+    "rating": 5,
+    "tags": ["图片"]
+  },
+
+  {
+    "id": 15,
+    "name": "Markdown Preview",
+    "title": "Markdown预览",
+    "category": "文本工具",
+    "description": "Markdown实时预览工具",
+    "url": "/text/markdown-preview.html",
+    "icon": "📝",
+    "featured": false,
+    "rating": 5,
+    "tags": ["文本"]
+  }
+]
