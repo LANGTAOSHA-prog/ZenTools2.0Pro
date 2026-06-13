@@ -1,30 +1,65 @@
 
-/* =========================
-   ZenTools Ultra Lite
-   （稳定上线版）
-========================= */
+/* ================================
+   ZenTools Ultimate Safe Engine
+   永不白屏版本
+================================ */
 
 const app = document.getElementById("app");
 
-let DB = {
-  tools: [],
-  tutorials: [],
-  reviews: []
+/* ================================
+   本地兜底数据（关键）
+================================ */
+
+const FALLBACK = {
+  tools: [
+    {
+      id: 1,
+      title: "JSON格式化工具",
+      description: "本地备用工具（网络失败时显示）",
+      url: "#"
+    },
+    {
+      id: 2,
+      title: "Base64转换",
+      description: "基础编码工具",
+      url: "#"
+    }
+  ],
+  tutorials: [
+    {
+      title: "教程加载失败",
+      summary: "当前使用本地备用数据",
+      url: "#"
+    }
+  ],
+  reviews: [
+    {
+      title: "评测加载失败",
+      summary: "使用备用内容",
+      url: "#"
+    }
+  ]
 };
 
-/* =========================
-   安全加载 JSON
-========================= */
+/* ================================
+   超安全 fetch（核心）
+================================ */
 
-async function loadJSON(url){
+async function safeFetch(url, fallback){
+
+  const timeout = new Promise((_, reject)=>
+    setTimeout(()=>reject("timeout"), 3000)
+  );
 
   try{
 
-    const res = await fetch(url);
+    const res = await Promise.race([
+      fetch(url),
+      timeout
+    ]);
 
-    if(!res.ok){
-      throw new Error("404: " + url);
-    }
+    if(!res || !res.ok)
+      throw new Error("HTTP error");
 
     const text = await res.text();
 
@@ -32,149 +67,147 @@ async function loadJSON(url){
 
   }catch(e){
 
-    console.warn("JSON加载失败:", url, e);
+    console.warn("加载失败:", url, e);
 
-    return [];
+    return fallback;
 
   }
 
 }
 
-}
+/* ================================
+   数据层
+================================ */
 
-/* =========================
-   初始化数据
-========================= */
+let DB = {
+  tools: [],
+  tutorials: [],
+  reviews: []
+};
+
+/* ================================
+   初始化数据（防崩溃）
+================================ */
 
 async function initData(){
 
   DB.tools =
-    await loadJSON("./data/tools-data.json");
+    await safeFetch(
+      "./data/tools-data.json",
+      FALLBACK.tools
+    );
 
   DB.tutorials =
-    await loadJSON("./data/tutorials-data.json");
+    await safeFetch(
+      "./data/tutorials-data.json",
+      FALLBACK.tutorials
+    );
 
   DB.reviews =
-    await loadJSON("./data/reviews-data.json");
+    await safeFetch(
+      "./data/reviews-data.json",
+      FALLBACK.reviews
+    );
 
 }
 
-/* =========================
-   渲染函数
-========================= */
+/* ================================
+   强制渲染（永不空白）
+================================ */
 
 function renderHome(){
 
   app.innerHTML = `
-    <h1>ZenTools Ultra Lite</h1>
+    <div style="font-family:Arial;padding:20px">
 
-    <h2>热门工具</h2>
+      <h1>ZenTools</h1>
 
-    ${DB.tools.slice(0,6).map(t=>`
-      <div class="card">
-        <h3>${t.title}</h3>
-        <p>${t.description || ""}</p>
-        <a href="${t.url}">使用</a>
-      </div>
-    `).join("")}
+      <p style="color:gray">
+        Ultra Safe Mode（防白屏模式）
+      </p>
 
+      <h2>工具</h2>
+
+      ${DB.tools.map(t=>`
+        <div style="padding:10px;margin:10px 0;border:1px solid #eee">
+          <h3>${t.title}</h3>
+          <p>${t.description || ""}</p>
+        </div>
+      `).join("")}
+
+      <h2>教程</h2>
+
+      ${DB.tutorials.map(t=>`
+        <div style="padding:10px;margin:10px 0;border:1px solid #eee">
+          <h3>${t.title}</h3>
+          <p>${t.summary || ""}</p>
+        </div>
+      `).join("")}
+
+      <h2>评测</h2>
+
+      ${DB.reviews.map(r=>`
+        <div style="padding:10px;margin:10px 0;border:1px solid #eee">
+          <h3>${r.title}</h3>
+          <p>${r.summary || ""}</p>
+        </div>
+      `).join("")}
+
+    </div>
   `;
 
 }
 
-/* =========================
-   工具页
-========================= */
-
-function renderTools(){
-
-  app.innerHTML = `
-    <h1>全部工具</h1>
-
-    ${DB.tools.map(t=>`
-      <div class="card">
-        <h3>${t.title}</h3>
-        <p>${t.description || ""}</p>
-        <a href="${t.url}">打开</a>
-      </div>
-    `).join("")}
-
-  `;
-
-}
-
-/* =========================
-   教程页
-========================= */
-
-function renderTutorials(){
-
-  app.innerHTML = `
-    <h1>教程中心</h1>
-
-    ${DB.tutorials.map(t=>`
-      <div class="card">
-        <h3>${t.title}</h3>
-        <p>${t.summary}</p>
-        <a href="${t.url}">查看</a>
-      </div>
-    `).join("")}
-
-  `;
-
-}
-
-/* =========================
-   评测页
-========================= */
-
-function renderReviews(){
-
-  app.innerHTML = `
-    <h1>深度评测</h1>
-
-    ${DB.reviews.map(r=>`
-      <div class="card">
-        <h3>${r.title}</h3>
-        <p>${r.summary}</p>
-        <a href="${r.url}">阅读</a>
-      </div>
-    `).join("")}
-
-  `;
-
-}
-
-/* =========================
-   简单路由（稳定版）
-========================= */
+/* ================================
+   路由（极简稳定）
+================================ */
 
 function router(){
 
   const hash = location.hash || "#/";
 
-  if(hash === "#/tools") return renderTools();
+  if(hash === "#/tools"){
+    return alert("工具页（Lite模式）");
+  }
 
-  if(hash === "#/tutorials") return renderTutorials();
+  if(hash === "#/tutorials"){
+    return alert("教程页（Lite模式）");
+  }
 
-  if(hash === "#/reviews") return renderReviews();
+  if(hash === "#/reviews"){
+    return alert("评测页（Lite模式）");
+  }
 
   renderHome();
 
 }
 
-/* =========================
-   启动
-========================= */
+/* ================================
+   启动器（永不卡死）
+================================ */
 
 async function init(){
 
-  await initData();
+  try{
 
-  router();
+    await initData();
+
+  }catch(e){
+
+    console.error("初始化失败，使用兜底数据");
+
+    DB = FALLBACK;
+
+  }
+
+  renderHome();
 
   window.addEventListener("hashchange", router);
 
 }
+
+/* ================================
+   强制执行
+================================ */
 
 init();
