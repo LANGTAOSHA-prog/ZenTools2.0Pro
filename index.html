@@ -1,42 +1,142 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenTools</title>
-
-<style>
-body{
-  font-family: Arial;
-  margin:0;
-  background:#f6f7fb;
-}
-
-#app{
-  padding:20px;
-}
-
-.card{
-  background:white;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-a{
-  color:#007bff;
-  text-decoration:none;
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ZenTools - 免费在线工具集合</title>
+  <meta name="description" content="ZenTools提供免费在线工具集合，包括PDF工具、AI助手、开发工具等，一站式解决日常工作需求" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-
 <body>
 
-<div id="app">加载中...</div>
+<!-- NAV -->
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-mark">⛵</div>
+      <span>ZenTools</span>
+    </div>
+    <div class="nav-menu">
+      <a href="#tools">工具大全</a>
+      <a href="#categories">分类</a>
+      <a href="#features">特性</a>
+      <a href="#about">关于</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeBtn" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>免费开源 · 无需注册</span>
+    </div>
+    <h1 class="hero-title">一站式<span class="hl">工具集合</span></h1>
+    <p class="hero-sub">精选免费在线工具，解决日常工作生活中的各种问题</p>
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="搜索工具..." />
+      <button id="searchBtn">🔍 搜索</button>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <div class="stat">
+        <div class="stat-icon">🛠️</div>
+        <span class="stat-number" data-target="15">0</span>
+        <p>工具数量</p>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">📁</div>
+        <span class="stat-number" data-target="5">0</span>
+        <p>分类</p>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">💯</div>
+        <span>100%</span>
+        <p>免费使用</p>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">🕐</div>
+        <span>24/7</span>
+        <p>随时可用</p>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#tools" class="btn btn-primary">
+        <span>立即使用</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#features" class="btn btn-secondary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>了解更多</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="section features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-chip">核心特性</div>
+      <h2>为什么选择 ZenTools</h2>
+      <p class="s-sub">我们致力于提供最佳的用户体验</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>即时可用</h3>
+        <p>无需注册、无需下载，打开即用，节省您的宝贵时间</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>安全可靠</h3>
+        <p>所有工具本地处理，数据不会上传到服务器，保护
+        <a href="#about">关于我们</a>
+      </div>
+      <div class="footer-col">
+        <h4>工具分类</h4>
+        <a href="#">AI工具</a>
+        <a href="#">PDF工具</a>
+        <a href="#">开发工具</a>
+      </div>
+      <div class="footer-col">
+        <h4>联系方式</h4>
+        <a href="mailto:contact@zentools.io">contact@zentools.io</a>
+        <a href="https://github.com/LANGTAOSHA-prog/ZenTools2.0Pro">GitHub</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> ZenTools. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
 
 <script src="./assets/js/app.js"></script>
-
 </body>
 </html>
