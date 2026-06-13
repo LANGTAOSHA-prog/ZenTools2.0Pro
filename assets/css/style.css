@@ -677,3 +677,186 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* =========================
+   App Polish / SPA States
+========================= */
+
+.app-loading,
+.empty-state{
+min-height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:var(--bg-card);
+border:1px solid var(--border);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:32px;
+color:var(--text-light);
+}
+
+.eyebrow{
+text-transform:uppercase;
+letter-spacing:.12em;
+font-size:13px;
+font-weight:700;
+margin-bottom:12px;
+opacity:.85;
+}
+
+.section-header p{
+color:var(--text-light);
+margin-top:10px;
+}
+
+.resource-card{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.card-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+}
+
+.tool-icon{
+width:48px;
+height:48px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+background:rgba(37,99,235,.1);
+color:var(--primary);
+font-size:24px;
+font-weight:800;
+}
+
+.tool-icon.large{
+width:76px;
+height:76px;
+font-size:38px;
+margin-bottom:18px;
+}
+
+.badge,
+.tag-row span{
+display:inline-flex;
+align-items:center;
+border:1px solid var(--border);
+border-radius:999px;
+background:var(--bg);
+color:var(--text-light);
+font-size:13px;
+padding:5px 10px;
+}
+
+.tag-row{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:auto;
+}
+
+.resource-card .btn{
+margin-top:6px;
+text-align:center;
+}
+
+.site-footer{
+padding:32px 0;
+border-top:1px solid var(--border);
+background:var(--bg-card);
+color:var(--text-light);
+text-align:center;
+}
+
+.detail-hero{
+min-height:calc(100vh - 137px);
+padding:80px 0;
+background:linear-gradient(135deg, rgba(37,99,235,.12), transparent 60%);
+}
+
+.detail-card{
+background:var(--bg-card);
+border:1px solid var(--border);
+border-radius:24px;
+box-shadow:var(--shadow);
+padding:48px;
+max-width:860px;
+}
+
+.detail-card h1{
+font-size:46px;
+line-height:1.15;
+margin-bottom:18px;
+}
+
+.detail-card p:not(.eyebrow){
+color:var(--text-light);
+font-size:18px;
+margin-bottom:22px;
+}
+
+.detail-actions{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:28px;
+}
+
+.btn.secondary{
+background:var(--bg);
+color:var(--text);
+border:1px solid var(--border);
+}
+
+@media (max-width: 760px){
+.navbar{
+height:auto;
+padding:16px 20px;
+align-items:flex-start;
+gap:14px;
+}
+
+.nav-menu{
+width:100%;
+order:3;
+flex-wrap:wrap;
+gap:14px;
+}
+
+.hero{
+padding:64px 0;
+}
+
+.hero-title{
+font-size:38px;
+}
+
+.search-wrapper{
+border-radius:18px;
+flex-direction:column;
+}
+
+.search-wrapper button{
+padding:14px 24px;
+}
+
+.hero-stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.detail-card{
+padding:30px 22px;
+}
+
+.detail-card h1{
+font-size:34px;
+}
+}
