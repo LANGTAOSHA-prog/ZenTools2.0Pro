@@ -1,0 +1,21 @@
+{
+  "nav.home":"首页",
+  "nav.pdf":"PDF工具",
+  "nav.tutorials":"教程中心",
+  "nav.reviews":"深度评测",
+  "nav.about":"关于",
+
+  "hero.title":"免费在线工具集合",
+  "hero.subtitle":"开发 · AI · PDF · 图片 · 文本工具",
+
+  "section.popular":"热门工具",
+  "section.categories":"工具分类",
+  "section.ai":"AI精选工具",
+  "section.reviews":"深度评测",
+  "section.tutorials":"最新教程",
+
+  "footer.links":"快速链接",
+  "footer.info":"网站信息",
+
+  "search.placeholder":"搜索工具..."
+}
