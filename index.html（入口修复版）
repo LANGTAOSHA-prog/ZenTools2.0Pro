@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>ZenTools</title>
+
+<meta http-equiv="refresh" content="0; url=./index-modern.html">
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+padding-top:100px;
+}
+</style>
+</head>
+
+<body>
+<h2>正在进入 ZenTools...</h2>
+<p>如果没有跳转，请点击：</p>
+
+<a href="./index-modern.html">
+进入 ZenTools
+</a>
+
+</body>
+</html>
