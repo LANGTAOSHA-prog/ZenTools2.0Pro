@@ -1,0 +1,203 @@
+[
+  {
+    "id": 1,
+    "slug": "canva-ai",
+    "title": "Canva AI 深度评测",
+    "tool": "Canva AI",
+    "category": "AI设计",
+    "difficulty": "入门",
+    "read_time": 9,
+    "updated": "2026-06",
+    "rating": 4.8,
+    "summary": "全面评测 Canva AI 的设计能力、文生图功能、Magic Studio 工作流以及适用场景。",
+    "url": "/tools/canva-ai.html",
+    "cover": "/assets/images/reviews/canva-ai.webp",
+    "featured": true,
+    "tags": [
+      "Canva AI",
+      "AI设计",
+      "文生图"
+    ]
+  },
+
+  {
+    "id": 2,
+    "slug": "chatgpt",
+    "title": "ChatGPT 深度评测",
+    "tool": "ChatGPT",
+    "category": "AI助手",
+    "difficulty": "入门",
+    "read_time": 12,
+    "updated": "2026-06",
+    "rating": 5.0,
+    "summary": "从写作、代码、搜索、Agent能力等多个维度分析 ChatGPT 的实际表现。",
+    "url": "/tools/chatgpt-review.html",
+    "cover": "/assets/images/reviews/chatgpt.webp",
+    "featured": true,
+    "tags": [
+      "ChatGPT",
+      "OpenAI",
+      "AI助手"
+    ]
+  },
+
+  {
+    "id": 3,
+    "slug": "claude",
+    "title": "Claude 深度评测",
+    "tool": "Claude",
+    "category": "AI助手",
+    "difficulty": "入门",
+    "read_time": 10,
+    "updated": "2026-06",
+    "rating": 4.9,
+    "summary": "重点测试 Claude 的长文本处理、知识整理与代码理解能力。",
+    "url": "/tools/claude-review.html",
+    "cover": "/assets/images/reviews/claude.webp",
+    "featured": true,
+    "tags": [
+      "Claude",
+      "Anthropic"
+    ]
+  },
+
+  {
+    "id": 4,
+    "slug": "gemini",
+    "title": "Gemini 深度评测",
+    "tool": "Gemini",
+    "category": "AI助手",
+    "difficulty": "入门",
+    "read_time": 11,
+    "updated": "2026-06",
+    "rating": 4.7,
+    "summary": "评测 Gemini 在搜索增强、多模态和 Google 生态集成方面的表现。",
+    "url": "/tools/gemini-review.html",
+    "cover": "/assets/images/reviews/gemini.webp",
+    "featured": true,
+    "tags": [
+      "Gemini",
+      "Google AI"
+    ]
+  },
+
+  {
+    "id": 5,
+    "slug": "cursor",
+    "title": "Cursor 深度评测",
+    "tool": "Cursor",
+    "category": "AI编程",
+    "difficulty": "中级",
+    "read_time": 13,
+    "updated": "2026-06",
+    "rating": 4.8,
+    "summary": "分析 Cursor 在代码生成、项目理解、Agent 编程方面的能力。",
+    "url": "/tools/cursor-review.html",
+    "cover": "/assets/images/reviews/cursor.webp",
+    "featured": true,
+    "tags": [
+      "Cursor",
+      "AI编程"
+    ]
+  },
+
+  {
+    "id": 6,
+    "slug": "github-copilot",
+    "title": "GitHub Copilot 深度评测",
+    "tool": "GitHub Copilot",
+    "category": "AI编程",
+    "difficulty": "中级",
+    "read_time": 12,
+    "updated": "2026-06",
+    "rating": 4.6,
+    "summary": "评测 GitHub Copilot 在 VS Code 与大型项目开发中的表现。",
+    "url": "/tools/github-copilot-review.html",
+    "cover": "/assets/images/reviews/copilot.webp",
+    "featured": false,
+    "tags": [
+      "Copilot",
+      "VS Code"
+    ]
+  },
+
+  {
+    "id": 7,
+    "slug": "perplexity",
+    "title": "Perplexity 深度评测",
+    "tool": "Perplexity",
+    "category": "AI搜索",
+    "difficulty": "入门",
+    "read_time": 8,
+    "updated": "2026-06",
+    "rating": 4.8,
+    "summary": "测试 Perplexity 在实时搜索、资料引用和研究任务中的能力。",
+    "url": "/tools/perplexity-review.html",
+    "cover": "/assets/images/reviews/perplexity.webp",
+    "featured": false,
+    "tags": [
+      "Perplexity",
+      "AI搜索"
+    ]
+  },
+
+  {
+    "id": 8,
+    "slug": "notion-ai",
+    "title": "Notion AI 深度评测",
+    "tool": "Notion AI",
+    "category": "效率工具",
+    "difficulty": "入门",
+    "read_time": 8,
+    "updated": "2026-06",
+    "rating": 4.5,
+    "summary": "评测 Notion AI 在笔记整理、知识管理和办公场景中的表现。",
+    "url": "/tools/notion-ai-review.html",
+    "cover": "/assets/images/reviews/notion-ai.webp",
+    "featured": false,
+    "tags": [
+      "Notion AI",
+      "效率工具"
+    ]
+  },
+
+  {
+    "id": 9,
+    "slug": "deepseek",
+    "title": "DeepSeek 深度评测",
+    "tool": "DeepSeek",
+    "category": "AI助手",
+    "difficulty": "入门",
+    "read_time": 11,
+    "updated": "2026-06",
+    "rating": 4.8,
+    "summary": "评测 DeepSeek 在中文问答、代码生成和推理能力方面的表现。",
+    "url": "/tools/deepseek-review.html",
+    "cover": "/assets/images/reviews/deepseek.webp",
+    "featured": true,
+    "tags": [
+      "DeepSeek",
+      "中文AI"
+    ]
+  },
+
+  {
+    "id": 10,
+    "slug": "sensenova",
+    "title": "SenseNova 深度评测",
+    "tool": "SenseNova",
+    "category": "AI模型",
+    "difficulty": "中级",
+    "read_time": 12,
+    "updated": "2026-06",
+    "rating": 4.6,
+    "summary": "评测 SenseNova 在 API 调用、中文能力和企业应用场景中的表现。",
+    "url": "/tools/sensenova-review.html",
+    "cover": "/assets/images/reviews/sensenova.webp",
+    "featured": true,
+    "tags": [
+      "SenseNova",
+      "API"
+    ]
+  }
+]
