@@ -1,0 +1,21 @@
+{
+  "nav.home":"ホーム",
+  "nav.pdf":"PDFツール",
+  "nav.tutorials":"チュートリアル",
+  "nav.reviews":"レビュー",
+  "nav.about":"概要",
+
+  "hero.title":"無料オンラインツール集",
+  "hero.subtitle":"開発・AI・PDF・画像・テキストツール",
+
+  "section.popular":"人気ツール",
+  "section.categories":"カテゴリ",
+  "section.ai":"おすすめAIツール",
+  "section.reviews":"レビュー",
+  "section.tutorials":"最新チュートリアル",
+
+  "footer.links":"クイックリンク",
+  "footer.info":"サイト情報",
+
+  "search.placeholder":"ツールを検索..."
+}
