@@ -1,6 +1,6 @@
 import axios from "axios";
 import fs from "fs";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import { SOURCES } from "./sources.js";
 
 const OUTPUT = "../data/tools-data.json";
