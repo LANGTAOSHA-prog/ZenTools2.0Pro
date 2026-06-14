@@ -1,0 +1,50 @@
+name: FreeConvert Sync
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 2 * * 0'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        working-directory: ./crawler
+        run: npm install
+
+      - name: Run FreeConvert Crawler
+        working-directory: ./crawler
+        run: node freeconvert.js
+
+      - name: Verify Generated File
+        run: |
+          ls -la data/
+          test -f data/tools-data.json
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "ZenTools Bot"
+          git config --global user.email "actions@github.com"
+
+          git add data/tools-data.json
+
+          git diff --staged --quiet || git commit -m "Auto update FreeConvert tools"
+
+      - name: Push Changes
+        run: |
+          git push
