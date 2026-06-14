@@ -1,15 +1,11 @@
 {
-  "name": "freeconvert-zentools-sync",
-  "version": "1.0.0",
-  "description": "FreeConvert to ZenTools Auto Importer",
-  "main": "freeconvert.js",
+  "name": "zentools-freeconvert-pro-max",
   "type": "module",
   "scripts": {
-    "start": "node freeconvert.js"
+    "start": "node crawler/freeconvert.js"
   },
   "dependencies": {
     "axios": "^1.11.0",
-    "cheerio": "^1.1.2",
-    "xml2js": "^0.6.2"
+    "cheerio": "^1.1.2"
   }
 }
