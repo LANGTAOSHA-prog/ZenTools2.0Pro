@@ -1,0 +1,28 @@
+name: FreeConvert Sync
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        working-directory: ./crawler
+        run: npm install
+
+      - name: Run Crawler
+        working-directory: ./crawler
+        run: node freeconvert.js
