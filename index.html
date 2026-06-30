@@ -1,142 +1,763 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>ZenTools - 免费在线工具集合</title>
-  <meta name="description" content="ZenTools提供免费在线工具集合，包括PDF工具、AI助手、开发工具等，一站式解决日常工作需求" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>全球免费API · 模型聚合</title>
+  <!-- Font Awesome 图标库 (免费) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f6f9fc 0%, #e9f0f5 100%);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1280px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 48px;
+      box-shadow: 0 20px 40px -12px rgba(0, 20, 30, 0.25), 0 8px 24px -6px rgba(0, 0, 0, 0.05);
+      padding: 2rem 2rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 600;
+      font-size: 2.1rem;
+      letter-spacing: -0.02em;
+      color: #0b1e2b;
+      margin-bottom: 0.25rem;
+    }
+
+    .subhead {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding-bottom: 1rem;
+    }
+
+    .subhead p {
+      color: #2c4a5e;
+      font-size: 1rem;
+      font-weight: 400;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.3rem 1rem 0.3rem 0;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .subhead p i {
+      color: #1d7a9c;
+    }
+
+    .badge-auto {
+      background: #0f2e3b;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 8px rgba(0, 40, 60, 0.08);
+    }
+
+    .badge-auto i {
+      font-size: 0.7rem;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.6; transform: scale(0.95); }
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin: 1.5rem 0 1.8rem 0;
+      align-items: center;
+    }
+
+    .btn {
+      background: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #1a3647;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-primary {
+      background: #0b1e2b;
+      color: white;
+      border: 1px solid #0b1e2b;
+      box-shadow: 0 8px 14px -8px rgba(11, 30, 43, 0.3);
+    }
+
+    .btn-primary i {
+      color: #9fc9dd;
+    }
+
+    .btn-primary:hover {
+      background: #123142;
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px -6px #0b1e2b;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #b7cfdd;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: #6f97af;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    .filter-tag {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 450;
+      color: #1a3647;
+      border: 1px solid rgba(0,0,0,0.02);
+      cursor: pointer;
+      transition: all 0.15s;
+      backdrop-filter: blur(2px);
+    }
+
+    .filter-tag.active {
+      background: #0b1e2b;
+      color: white;
+      border-color: #0b1e2b;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .filter-tag:hover {
+      background: #d3e3ed;
+    }
+
+    .filter-tag.active:hover {
+      background: #1f3f52;
+    }
+
+    /* 卡片网格 */
+    .api-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .api-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 1.4rem 1.5rem 1.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 6px 18px rgba(0, 20, 30, 0.04);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .api-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 30px -12px rgba(0, 40, 60, 0.12);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .company-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(0, 0, 0, 0.02);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #0b1e2b;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .company-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #0b1e2b;
+      letter-spacing: -0.01em;
+    }
+
+    .model-badge {
+      background: #e4edf4;
+      border-radius: 40px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #1c4357;
+      white-space: nowrap;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .endpoint-box {
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.6rem 0.8rem;
+      border-radius: 16px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.75rem;
+      word-break: break-all;
+      color: #1b3f54;
+      border: 1px solid rgba(0,0,0,0.02);
+      margin: 0.5rem 0 0.8rem 0;
+      line-height: 1.5;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .endpoint-box i {
+      color: #6a8fa5;
+      margin-right: 6px;
+      font-size: 0.7rem;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.25rem;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .tag {
+      background: rgba(11, 30, 43, 0.04);
+      padding: 0.15rem 0.6rem;
+      border-radius: 40px;
+      font-size: 0.65rem;
+      font-weight: 450;
+      color: #1e485f;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .tag.free {
+      background: #d4e9f0;
+      color: #00445a;
+    }
+
+    .tag.limit {
+      background: #ffefe5;
+      color: #aa4e2b;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: #3d6b83;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 30px;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .copy-btn:hover {
+      background: #0b1e2b;
+      color: white;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: #3d6379;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(0,0,0,0.03);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 2rem;
+    }
+
+    .footer-note i {
+      margin-right: 6px;
+      color: #43758f;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 0;
+      color: #2e5b74;
+      background: rgba(255,255,255,0.2);
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+    }
+
+    .toast-message {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0b1e2b;
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 450;
+      font-size: 0.9rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast-message.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 1.2rem; }
+      h1 { font-size: 1.6rem; }
+      .subhead { flex-direction: column; align-items: start; gap: 0.5rem; }
+      .filter-group { margin-left: 0; width: 100%; }
+      .controls { flex-direction: column; align-items: stretch; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav-wrap">
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="logo-mark">⛵</div>
-      <span>ZenTools</span>
-    </div>
-    <div class="nav-menu">
-      <a href="#tools">工具大全</a>
-      <a href="#categories">分类</a>
-      <a href="#features">特性</a>
-      <a href="#about">关于</a>
-    </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeBtn" aria-label="切换主题">🌙</button>
+<div class="container" id="app">
+  <div class="subhead">
+    <h1>
+      <i class="fas fa-globe" style="color: #1c6f8f;"></i> 免费API · 模型集
+    </h1>
+    <span class="badge-auto">
+      <i class="fas fa-sync-alt fa-fw"></i> 自动获取 · 实时
+    </span>
+  </div>
+
+  <!-- 控制区域 -->
+  <div class="controls">
+    <button class="btn btn-primary" id="refreshBtn">
+      <i class="fas fa-cloud-download-alt"></i> 刷新数据
+    </button>
+    <div class="filter-group" id="filterGroup">
+      <span class="filter-tag active" data-filter="all">全部</span>
+      <span class="filter-tag" data-filter="chat">聊天</span>
+      <span class="filter-tag" data-filter="embedding">嵌入</span>
+      <span class="filter-tag" data-filter="vision">视觉</span>
+      <span class="filter-tag" data-filter="free">免费</span>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      <span>免费开源 · 无需注册</span>
-    </div>
-    <h1 class="hero-title">一站式<span class="hl">工具集合</span></h1>
-    <p class="hero-sub">精选免费在线工具，解决日常工作生活中的各种问题</p>
-    <div class="search-wrapper">
-      <input type="text" id="searchInput" placeholder="搜索工具..." />
-      <button id="searchBtn">🔍 搜索</button>
-    </div>
-    <div class="hero-stats" id="heroStats">
-      <div class="stat">
-        <div class="stat-icon">🛠️</div>
-        <span class="stat-number" data-target="15">0</span>
-        <p>工具数量</p>
-      </div>
-      <div class="stat">
-        <div class="stat-icon">📁</div>
-        <span class="stat-number" data-target="5">0</span>
-        <p>分类</p>
-      </div>
-      <div class="stat">
-        <div class="stat-icon">💯</div>
-        <span>100%</span>
-        <p>免费使用</p>
-      </div>
-      <div class="stat">
-        <div class="stat-icon">🕐</div>
-        <span>24/7</span>
-        <p>随时可用</p>
-      </div>
-    </div>
-    <div class="hero-actions">
-      <a href="#tools" class="btn btn-primary">
-        <span>立即使用</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-      <a href="#features" class="btn btn-secondary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 6v6l4 2"/>
-        </svg>
-        <span>了解更多</span>
-      </a>
-    </div>
+  <!-- API 网格 -->
+  <div class="api-grid" id="apiGrid">
+    <!-- 卡片由 JavaScript 动态渲染 -->
   </div>
-</section>
 
-<!-- FEATURES SECTION -->
-<section class="section features-section" id="features">
-  <div class="container">
-    <div class="section-header">
-      <div class="s-chip">核心特性</div>
-      <h2>为什么选择 ZenTools</h2>
-      <p class="s-sub">我们致力于提供最佳的用户体验</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-        </div>
-        <h3>即时可用</h3>
-        <p>无需注册、无需下载，打开即用，节省您的宝贵时间</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <h3>安全可靠</h3>
-        <p>所有工具本地处理，数据不会上传到服务器，保护
-        <a href="#about">关于我们</a>
-      </div>
-      <div class="footer-col">
-        <h4>工具分类</h4>
-        <a href="#">AI工具</a>
-        <a href="#">PDF工具</a>
-        <a href="#">开发工具</a>
-      </div>
-      <div class="footer-col">
-        <h4>联系方式</h4>
-        <a href="mailto:contact@zentools.io">contact@zentools.io</a>
-        <a href="https://github.com/LANGTAOSHA-prog/ZenTools2.0Pro">GitHub</a>
-      </div>
-    </div>
-    <div class="copyright">
-      © <span id="year"></span> ZenTools. All rights reserved.
-    </div>
+  <div class="footer-note">
+    <span><i class="fas fa-check-circle" style="color: #1c8b6b;"></i> 聚合自全球主流AI厂商</span>
+    <span><i class="fas fa-infinity"></i> 持续更新 · 开源精神</span>
+    <span><i class="fas fa-shield-alt"></i> 仅展示公开免费端点</span>
   </div>
-</footer>
+</div>
 
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+<!-- Toast 提示 -->
+<div id="toast" class="toast-message">✅ 已复制到剪贴板</div>
 
-<script src="./assets/js/app.js"></script>
+<script>
+  (function() {
+    "use strict";
+
+    // ---------- 模拟数据库 (全球各大模型公司免费API) ----------
+    // 为了体现“自动获取”，我们使用一个静态数据集 + 随机延迟模拟网络请求
+    // 实际生产可替换为 fetch 真实后端
+    const API_DATASET = [
+      {
+        id: 'openai',
+        company: 'OpenAI',
+        model: 'gpt-3.5-turbo (免费试用)',
+        endpoint: 'https://api.openai.com/v1/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '需API Key，新用户有免费额度',
+        icon: 'fa-brands fa-openai'
+      },
+      {
+        id: 'google',
+        company: 'Google AI',
+        model: 'Gemini 1.5 Flash',
+        endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+        type: 'chat',
+        free: true,
+        note: '免费层 60次/分钟',
+        icon: 'fa-brands fa-google'
+      },
+      {
+        id: 'anthropic',
+        company: 'Anthropic',
+        model: 'Claude 3 Haiku',
+        endpoint: 'https://api.anthropic.com/v1/messages',
+        type: 'chat',
+        free: true,
+        note: '新用户试用额度',
+        icon: 'fa-regular fa-comment-dots'
+      },
+      {
+        id: 'mistral',
+        company: 'Mistral AI',
+        model: 'Mistral 7B / Mixtral',
+        endpoint: 'https://api.mistral.ai/v1/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '免费套餐 1M token/月',
+        icon: 'fa-regular fa-wind'
+      },
+      {
+        id: 'cohere',
+        company: 'Cohere',
+        model: 'Command R / Embed',
+        endpoint: 'https://api.cohere.ai/v1/generate',
+        type: 'chat',
+        free: true,
+        note: '免费层 1000次/月',
+        icon: 'fa-regular fa-message'
+      },
+      {
+        id: 'deepseek',
+        company: 'DeepSeek',
+        model: 'DeepSeek-V3',
+        endpoint: 'https://api.deepseek.com/v1/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '完全免费（当前）',
+        icon: 'fa-regular fa-microchip'
+      },
+      {
+        id: 'qwen',
+        company: '阿里云 · 通义',
+        model: 'Qwen2.5-72B',
+        endpoint: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+        type: 'chat',
+        free: true,
+        note: '新用户免费额度',
+        icon: 'fa-regular fa-cloud'
+      },
+      {
+        id: 'baidu',
+        company: '百度 · 文心',
+        model: 'ERNIE-3.5-8K',
+        endpoint: 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant',
+        type: 'chat',
+        free: true,
+        note: '免费调用量',
+        icon: 'fa-regular fa-dragon'
+      },
+      {
+        id: 'zhipu',
+        company: '智谱AI',
+        model: 'GLM-4-Flash',
+        endpoint: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '免费额度 500万tokens',
+        icon: 'fa-regular fa-brain'
+      },
+      {
+        id: 'tencent',
+        company: '腾讯 · 混元',
+        model: 'hunyuan-lite',
+        endpoint: 'https://api.hunyuan.cloud.tencent.com/v1/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '公测免费',
+        icon: 'fa-regular fa-database'
+      },
+      {
+        id: 'jina',
+        company: 'Jina AI',
+        model: 'Embeddings v3',
+        endpoint: 'https://api.jina.ai/v1/embeddings',
+        type: 'embedding',
+        free: true,
+        note: '免费层 100万tokens',
+        icon: 'fa-regular fa-cube'
+      },
+      {
+        id: 'voyage',
+        company: 'Voyage AI',
+        model: 'voyage-2',
+        endpoint: 'https://api.voyageai.com/v1/embeddings',
+        type: 'embedding',
+        free: true,
+        note: '免费试用',
+        icon: 'fa-regular fa-ship'
+      },
+      {
+        id: 'replicate',
+        company: 'Replicate',
+        model: 'Llama 2 / Stable Diffusion',
+        endpoint: 'https://api.replicate.com/v1/predictions',
+        type: 'vision',
+        free: false,
+        note: '需信用卡，但提供免费试用',
+        icon: 'fa-regular fa-image'
+      },
+      {
+        id: 'groq',
+        company: 'Groq',
+        model: 'Llama 3 70B',
+        endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+        type: 'chat',
+        free: true,
+        note: '免费层 30次/分钟',
+        icon: 'fa-regular fa-bolt'
+      }
+    ];
+
+    // ---------- 状态 ----------
+    let currentFilter = 'all';
+    let apiData = [...API_DATASET];   // 可被刷新重置
+
+    const grid = document.getElementById('apiGrid');
+    const toast = document.getElementById('toast');
+    const filterTags = document.querySelectorAll('.filter-tag');
+    const refreshBtn = document.getElementById('refreshBtn');
+
+    // ---------- 辅助函数 ----------
+    function showToast(msg) {
+      toast.textContent = msg || '✅ 已复制到剪贴板';
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // 复制文本
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('📋 已复制: ' + text.slice(0, 40) + (text.length > 40 ? '…' : ''));
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('📋 已复制: ' + text.slice(0, 40) + (text.length > 40 ? '…' : ''));
+      } catch (e) {
+        showToast('❌ 复制失败，请手动复制');
+      }
+      document.body.removeChild(ta);
+    }
+
+    // ---------- 渲染卡片 ----------
+    function renderCards(data) {
+      const filtered = data.filter(item => {
+        if (currentFilter === 'all') return true;
+        if (currentFilter === 'free') return item.free === true;
+        return item.type === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="empty-state"><i class="fas fa-search" style="font-size:2.5rem; opacity:0.5; margin-bottom:0.8rem; display:block;"></i>没有匹配的API<br><span style="font-size:0.9rem; opacity:0.7;">试试切换筛选条件</span></div>`;
+        return;
+      }
+
+      let html = '';
+      filtered.forEach(item => {
+        const iconClass = item.icon || 'fa-regular fa-circle';
+        // 标签
+        const typeLabel = item.type === 'chat' ? '💬 聊天' : item.type === 'embedding' ? '📊 嵌入' : '🖼️ 视觉';
+        const freeLabel = item.free ? '🟢 免费' : '⚡ 试用';
+
+        html += `
+          <div class="api-card" data-id="${item.id}">
+            <div class="card-header">
+              <div class="company-icon"><i class="${iconClass}"></i></div>
+              <span class="company-name">${item.company}</span>
+              <span class="model-badge">${item.model}</span>
+            </div>
+            <div class="endpoint-box">
+              <i class="fas fa-link"></i> ${item.endpoint}
+            </div>
+            <div class="card-meta">
+              <div class="tag-group">
+                <span class="tag">${typeLabel}</span>
+                <span class="tag ${item.free ? 'free' : 'limit'}">${freeLabel}</span>
+                ${item.note ? `<span class="tag">${item.note}</span>` : ''}
+              </div>
+              <button class="copy-btn" data-endpoint="${item.endpoint}">
+                <i class="fas fa-copy"></i> 复制
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      grid.innerHTML = html;
+
+      // 绑定复制事件 (事件委托)
+      grid.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const endpoint = btn.getAttribute('data-endpoint');
+          if (endpoint) copyToClipboard(endpoint);
+        });
+      });
+    }
+
+    // ---------- 刷新 / 模拟“自动获取” ----------
+    function fetchAPIs() {
+      // 模拟网络延迟 & 自动获取 (随机打乱顺序或轻微变化)
+      refreshBtn.disabled = true;
+      refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 获取中…';
+
+      // 模拟动态: 可能从远端获取，这里我们重新排序并随机增加一条“新”API 效果
+      setTimeout(() => {
+        // 随机打乱数据集，制造“动态获取”感
+        const shuffled = [...API_DATASET];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        // 微调：随机修改一个note，体现实时性
+        if (shuffled.length > 2) {
+          const randomIdx = Math.floor(Math.random() * shuffled.length);
+          shuffled[randomIdx] = {
+            ...shuffled[randomIdx],
+            note: shuffled[randomIdx].note + ' ✨'
+          };
+        }
+        apiData = shuffled;
+        renderCards(apiData);
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-cloud-download-alt"></i> 刷新数据';
+        showToast('🔄 自动获取完成 · 数据已更新');
+      }, 400 + Math.random() * 300); // 模拟网络延迟
+    }
+
+    // ---------- 筛选切换 ----------
+    function setFilter(filter) {
+      currentFilter = filter;
+      // 更新激活样式
+      filterTags.forEach(tag => {
+        const tagFilter = tag.getAttribute('data-filter');
+        if (tagFilter === filter) tag.classList.add('active');
+        else tag.classList.remove('active');
+      });
+      renderCards(apiData);
+    }
+
+    // ---------- 绑定事件 ----------
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        setFilter(filter);
+      });
+    });
+
+    refreshBtn.addEventListener('click', fetchAPIs);
+
+    // ---------- 初始化 ----------
+    function init() {
+      // 初始渲染 (使用数据集)
+      renderCards(apiData);
+      // 自动触发一次获取，模拟“自动获取全球各大模型公司免费API”
+      setTimeout(() => {
+        fetchAPIs();
+      }, 300);
+    }
+
+    init();
+
+    // 额外：点击卡片上的复制也支持 (已经通过事件委托)
+    // 全局暴露copy用于调试
+    window.copyAPI = copyToClipboard;
+
+  })();
+</script>
+
 </body>
 </html>
